@@ -30,10 +30,8 @@ class AuthUseCase {
       ]);
     }
     if (password.length < 6) {
-      return left([
-        const LoginFailure.wrongFormatPassword(
-            error: 'Không được để trống password')
-      ]);
+      return left(
+          [const LoginFailure.wrongFormatPassword(error: 'password quá ngắn')]);
     }
 
     final response = await authRepo.login(
